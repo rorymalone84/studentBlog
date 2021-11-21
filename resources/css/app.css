@@ -1,0 +1,14 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+.background-image {
+    background-image: url("https://www.mewburn.com/hubfs/bioinformatics%20landmark%20blog.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attatchment: fixed;
+    background-size: cover;
+    background-height: 600px;
+}
