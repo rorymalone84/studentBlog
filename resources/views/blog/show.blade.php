@@ -20,7 +20,7 @@
 
     <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
         <span class="text-gray-500 pt-20">
-            <!-- excerpt -->
+            {{$post->excerpt}}
          </span>
     </p>
     
