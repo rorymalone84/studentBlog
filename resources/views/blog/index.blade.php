@@ -47,8 +47,20 @@
         <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
             No posts have been made yet
         </p>
-
         @endif
+
+        <!-- edit button appears if logged in -->
+        @auth
+            @if(Auth::user()->id == $post->user_id)
+                <span class="float-right">
+                    <a href="/blog/{{$post->slug}}/edit"
+                        class="text-gray-700 italic hover-text-gray-900 pb-1 border-b-2">
+                        Edit
+                    </a>
+                </span>      
+            @endif            
+        @endauth
+
     </div>
 </div>
 @endforeach
