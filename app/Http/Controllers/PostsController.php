@@ -41,6 +41,7 @@ class PostsController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'excerpt' => 'required',
             'description' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg|max:5048'
         ]);
@@ -51,6 +52,7 @@ class PostsController extends Controller
 
         Post::create([
             'title' => $request->input('title'),
+            'description' => $request->input('description'),            
             'description' => $request->input('description'),
             'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
             'image_path' => $newImageName,
@@ -63,12 +65,13 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        return view('blog.show')
+        ->with('post', Post::where('slug', $slug)->first());
     }
 
     /**

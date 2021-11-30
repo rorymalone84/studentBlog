@@ -36,6 +36,16 @@
 
         <br>
         
+        <input 
+            type="text" 
+            name="excerpt" 
+            id="" 
+            placeholder="Enter a short description of the subject"
+            class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
+        >
+
+        <br>
+        
         <!-- CK Editor is required in the class attribute for WYSIWYG editor-->
         <textarea 
             name="description"
