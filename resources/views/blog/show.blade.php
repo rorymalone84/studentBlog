@@ -17,8 +17,15 @@
     <span class="text-gray-500 pt-20">
        -  Posted: {{$post->created_at->diffForHumans()}}
     </span>
+
+    <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
+        <span class="text-gray-500 pt-20">
+            <!-- excerpt -->
+         </span>
+    </p>
     
     <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
+        <!-- Char escape used for the wysiwyg format being returned -->
         {!! $post->description !!}
     </p>
 </div>
