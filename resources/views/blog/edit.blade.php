@@ -5,7 +5,7 @@
 <div class="w-4/5 m-auto text-center">
     <div class="py-15 border-b border-gray-200">
         <h1 class="text-2xl">
-            Create a new post    
+            Edit post    
         </h1>
     </div>
 </div>
@@ -23,14 +23,15 @@
 @endif
 
 <div class="w-4/5 m-auto pt-20">
-    <form action="/blog" method="post" enctype="multipart/form-data">
+    <form action="/blog/{{$post->slug}}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
 
         <input 
             type="text" 
             name="title" 
-            id="" 
             placeholder="Enter title of Blog post"
+            value="{{$post->title}}"
             class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
 
@@ -39,8 +40,8 @@
         <input 
             type="text" 
             name="excerpt" 
-            id="" 
             placeholder="Enter a short description of the subject"
+            value="{{$post->excerpt}}"
             class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
 
@@ -50,8 +51,9 @@
         <textarea 
             name="description"
             placeholder="description"
+            value=""
             class="ckeditor py-20 bg-white-rounded-lg w-full block border-b-2 h-60 text-xl outline-none"
-            >
+            >{{$post->description}}
         </textarea>
 
         <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
