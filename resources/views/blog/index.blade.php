@@ -57,7 +57,18 @@
                         class="text-gray-700 italic hover-text-gray-900 pb-1 border-b-2">
                         Edit
                     </a>
-                </span>      
+                </span>
+                
+                <span class="float-right">
+                    <form action="/blog/{{$post->slug}}" method="POST">
+                        @csrf
+                        @method('delete');
+
+                        <button>
+                            Delete
+                        </button>
+                    </form>
+                </span>  
             @endif            
         @endauth
 
