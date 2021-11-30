@@ -19,7 +19,7 @@
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
     <div id="app">
-        <header class="bg-pink-900 py-6">
+        <header class="bg-purple-900 bg-opacity-75 py-6">
             <div class="container mx-auto flex justify-between items-center px-6">
                 <div>
                     <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
@@ -75,7 +75,7 @@
         </header>
 
          <!-- mobile menu -->
-        <div class="hidden mobile-menu bg-pink-900">
+        <div class="hidden mobile-menu bg-purple-900 bg-opacity-75">
             <ul class="pl-4">
                 <li><a href="/" class="block text-sm px-2 py-4 text-white hover:bg-purple-500 font-semibold">Home</a></li>
                 <li><a href="/blog" class="block text-sm px-2 py-4 text-white hover:bg-purple-500 transition duration-300">Blog</a></li>
