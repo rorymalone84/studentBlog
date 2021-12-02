@@ -13,6 +13,10 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/navBar.js') }}" defer></script>
 
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
+    <script src="{{ secure_asset('js/navBar.js') }}" defer></script>
+
+
     
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
