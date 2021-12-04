@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserDetails;
 use Illuminate\Http\Request;
 
 class DetailsController extends Controller
@@ -24,7 +25,24 @@ class DetailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'welcome-message' => 'required',
+            'about-me' => 'required',
+            'past-work' => 'required',
+            'current-work' => 'required',
+            'skills' => 'required|array',
+        ]);
+
+        UserDetails::create([
+            'welcome-message' => $request->input('welcome-message'),
+            'about-me' => $request->input('about-me'),
+            'current-work' => $request->input('current-work'),
+            'past-work' => $request->input('past-work'),
+            'skills' => $request->input('skills'),
+            'user_id' => auth()->user()->id
+        ]);
+
+        return redirect('/blog')->with('message','Details added');
     }
 
     /**
@@ -35,7 +53,7 @@ class DetailsController extends Controller
      */
     public function show($id)
     {
-        //
+        //update 
     }
 
     /**
@@ -46,7 +64,7 @@ class DetailsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('updateDetails.details');
     }
 
     /**

@@ -34,5 +34,6 @@ Route::resource('/blog',PostsController::class);
 //Details routes
 
 Route::get('/details',[DetailsController::class, 'create'])->middleware('auth');
+Route::post('/details',[DetailsController::class, 'store'])->middleware('auth');
 
 //Route::resource('/details', DetailsController::class);

@@ -20,7 +20,7 @@ class UserDetails extends Model
     ];
 
     protected $casts = [
-        'skills' => 'array',
+        'skills' => 'array'
     ];
 
     //each detail entry belongs to one user

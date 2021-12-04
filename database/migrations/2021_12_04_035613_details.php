@@ -13,9 +13,9 @@ class Details extends Migration
      */
     public function up()
     {
-        Schema::create('details', function(Blueprint $table){
+        Schema::create('user_details', function(Blueprint $table){
             $table->increments('id');
-            $table->string('welcome-messgae');
+            $table->string('welcome-message');
             $table->string('about-me');
             $table->string('current-work');
             $table->string('past-work');

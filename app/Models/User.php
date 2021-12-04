@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Details;
 use App\Models\UserDetails;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
