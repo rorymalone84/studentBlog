@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/',[PagesController::class, 'index']);
+Route::get('/',[DetailsController::class, 'index']);
 
 //Post routes
 

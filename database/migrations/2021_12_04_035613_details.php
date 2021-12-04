@@ -15,10 +15,10 @@ class Details extends Migration
     {
         Schema::create('user_details', function(Blueprint $table){
             $table->increments('id');
-            $table->string('welcome-message');
-            $table->string('about-me');
-            $table->string('current-work');
-            $table->string('past-work');
+            $table->string('welcome_message');
+            $table->string('about_me');
+            $table->string('current_work');
+            $table->string('past_work');
             $table->json('skills');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');

@@ -2,12 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\UserDetails;
 use Illuminate\Http\Request;
 
 class DetailsController extends Controller
 {
-       /**
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('index')->with('details', UserDetails::all());
+    }
+    
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -26,18 +37,18 @@ class DetailsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'welcome-message' => 'required',
-            'about-me' => 'required',
-            'past-work' => 'required',
-            'current-work' => 'required',
+            'welcome_message' => 'required',
+            'about_me' => 'required',
+            'past_work' => 'required',
+            'current_work' => 'required',
             'skills' => 'required|array',
         ]);
 
         UserDetails::create([
-            'welcome-message' => $request->input('welcome-message'),
-            'about-me' => $request->input('about-me'),
-            'current-work' => $request->input('current-work'),
-            'past-work' => $request->input('past-work'),
+            'welcome_message' => $request->input('welcome_message'),
+            'about_me' => $request->input('about_me'),
+            'current_work' => $request->input('current_work'),
+            'past_work' => $request->input('past_work'),
             'skills' => $request->input('skills'),
             'user_id' => auth()->user()->id
         ]);

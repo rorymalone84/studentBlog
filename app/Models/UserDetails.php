@@ -11,10 +11,10 @@ class UserDetails extends Model
     use HasFactory;
 
     protected $fillable = [
-        'welcome-message',
-        'about-me',
-        'current-work',
-        'past-work',
+        'welcome_message',
+        'about_me',
+        'current_work',
+        'past_work',
         'skills',
         'user_id'
     ];

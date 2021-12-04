@@ -28,7 +28,7 @@
 
         <input 
             type="text" 
-            name="welcome-message" 
+            name="welcome_message" 
             id="" 
             placeholder="Enter welcome message"
             class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
@@ -38,7 +38,7 @@
         
         <input 
             type="text" 
-            name="about-me" 
+            name="about_me" 
             id="" 
             placeholder="Describe yourself"
             class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
@@ -48,7 +48,7 @@
 
         <input 
         type="text" 
-        name="current-work" 
+        name="current_work" 
         placeholder="Enter what you're currently doing"
         class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
@@ -57,7 +57,7 @@
 
         <input 
         type="text" 
-        name="past-work" 
+        name="past_work" 
         placeholder="Enter what you done previously"
         class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
