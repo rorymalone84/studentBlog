@@ -17,7 +17,13 @@ use App\Http\Controllers\DetailsController;
 |
 */
 
+Auth::routes();
+
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/',[PagesController::class, 'index']);
+
+//Post routes
 
 Route::get('/blog',[PostsController::class, 'index']);
 
@@ -25,6 +31,8 @@ Route::get('/blog/create',[PostsController::class, 'create'])->middleware('auth'
 
 Route::resource('/blog',PostsController::class);
 
-Auth::routes();
+//Details routes
 
-Route::get('/details',[DetailsController::class, 'index'])->middleware('auth');
+Route::get('/details',[DetailsController::class, 'create'])->middleware('auth');
+
+//Route::resource('/details', DetailsController::class);

@@ -5,7 +5,7 @@
 <div class="w-4/5 m-auto text-center">
     <div class="py-15 border-b border-gray-200">
         <h1 class="text-2xl">
-            Change your home page details    
+            Change your home page details content
         </h1>
     </div>
 </div>
@@ -30,7 +30,7 @@
             type="text" 
             name="welcome-message" 
             id="" 
-            placeholder="Enter title of Blog post"
+            placeholder="Enter welcome message"
             class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
 
@@ -40,7 +40,7 @@
             type="text" 
             name="about-me" 
             id="" 
-            placeholder="Enter a short description of the subject"
+            placeholder="Describe yourself"
             class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
         
@@ -49,23 +49,29 @@
         <input 
         type="text" 
         name="current-work" 
-        placeholder="Enter a short description of the subject"
+        placeholder="Enter what you're currently doing"
         class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
+
+        <br>
 
         <input 
         type="text" 
         name="past-work" 
-        placeholder="Enter a short description of the subject"
+        placeholder="Enter what you done previously"
         class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
+
+        <br>
 
         <input 
         type="text" 
         name="skills[]" 
-        placeholder="Enter a short description of the subject"
+        placeholder="Enter what skills you have"
         class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
+
+        <br>
         
         <button
         type="submit"
