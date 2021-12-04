@@ -42,7 +42,7 @@
                     @guest
                         <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @if (Route::has('register'))
-                            <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
+                           
                         @endif
                     @else
                         <span>{{ Auth::user()->name}}</span>
@@ -90,7 +90,6 @@
             @endauth
             @guest
                 <li><a href="/login" class="block text-sm px-2 py-4 text-white hover:bg-purple-500 transition duration-300">Login</a></li>
-                <li><a href="/register" class="block text-sm px-2 py-4 text-white hover:bg-purple-500 transition duration-300">Register</a></li>
             @endguest
             </ul>
         </div>
