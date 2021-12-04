@@ -11,7 +11,7 @@
                 <a 
                 href="/blog"
                 class="
-                text-center bg-yellow-200 text-purple-700 py-2 px-4 font-bold text-xl uppercase
+                text-center bg-gray-50 text-purple-700 py-2 px-4 font-bold text-xl uppercase
                 rounded"
                 >See my Posts</a>
             </div>

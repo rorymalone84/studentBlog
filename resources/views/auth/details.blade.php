@@ -48,7 +48,14 @@
 
         <input 
         type="text" 
-        name="studies" 
+        name="current-work" 
+        placeholder="Enter a short description of the subject"
+        class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
+        >
+
+        <input 
+        type="text" 
+        name="past-work" 
         placeholder="Enter a short description of the subject"
         class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
@@ -60,9 +67,6 @@
         class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
         
-
-
-
         <button
         type="submit"
         class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl"
