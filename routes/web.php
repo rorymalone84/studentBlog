@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\DetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,4 @@ Route::resource('/blog',PostsController::class);
 
 Auth::routes();
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/details',[DetailsController::class, 'index'])->middleware('auth');
