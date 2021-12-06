@@ -18,6 +18,7 @@ In this project, new things I have implented that haven't featured in other port
 
 - [Eloquent Url Slug ](https://github.com/cviebrock/eloquent-sluggable)
 - [CK text rich text editor](https://ckeditor.com/)
+- A save post and publish post feature
 - An opportunity to practice git branching
 
 ## ToDo
