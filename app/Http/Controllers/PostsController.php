@@ -34,7 +34,7 @@ class PostsController extends Controller
      */
     public function saved()
     {
-        return view('blog.index')->with('posts', 
+        return view('blog.saved')->with('posts', 
         Post::orderBy('updated_at','DESC')
         ->where('complete', 'false')
         ->get());

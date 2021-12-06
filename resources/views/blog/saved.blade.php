@@ -5,7 +5,7 @@
 <div class="w-4/5 m-auto text-center">
     <div class="py-15 border-b border-gray-200">
         <h1 class="text-2xl">
-            Blog Posts
+            Saved and unpublished Blog Posts
         </h1>
     </div>
 </div>

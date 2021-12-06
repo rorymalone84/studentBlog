@@ -32,9 +32,7 @@ Route::get('/blog/create',[PostsController::class, 'create'])->middleware('auth'
 Route::resource('/blog',PostsController::class);
 
 //Save/saved post routes
-Route::post('/blog/create',[PostsController::class, 'save'])->middleware('auth');
-
-Route::get('/blog/savedEntries',[PostsController::class, 'saved'])->middleware('auth');
+Route::get('/saved',[PostsController::class, 'saved'])->middleware('auth');
 
 
 //Details routes
