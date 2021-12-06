@@ -120,16 +120,21 @@ class PostsController extends Controller
             'title' => 'required',
             'excerpt' => 'required',
             'description' => 'required',
-            'image' => 'required|mimes:jpg,png,jpeg|max:5048'
+            'image' => 'sometimes|mimes:jpg,png,jpeg|max:5048'
         ]);
+
+        $newImageName = uniqid() .'-' .
+        $request->title. $request->image->extension();
+        $request->image->move(public_path('images'), $newImageName);
         
         Post::where('slug', $slug)
         ->update([
             'title' => $request->input('title'),
-            'description' => $request->input('description'),            
+            'excerpt' => $request->input('excerpt'),            
             'description' => $request->input('description'),
             'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
-            //'image_path' => $newImageName,
+            'image_path' => $newImageName,
+            'complete' => $request->input('complete'),
             'user_id' => auth()->user()->id
         ]);
 

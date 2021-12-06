@@ -89,7 +89,8 @@
 
         <button
         type="submit"
-        value="complete"
+        name="complete"
+        value="true"
         class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl"
         >
         Post
