@@ -23,13 +23,19 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 
 Route::get('/',[DetailsController::class, 'index']);
 
-//Post routes
+//Published Post routes
 
 Route::get('/blog',[PostsController::class, 'index']);
 
 Route::get('/blog/create',[PostsController::class, 'create'])->middleware('auth');
 
 Route::resource('/blog',PostsController::class);
+
+//Save/saved post routes
+Route::post('/blog/create',[PostsController::class, 'save'])->middleware('auth');
+
+Route::get('/blog/savedEntries',[PostsController::class, 'saved'])->middleware('auth');
+
 
 //Details routes
 

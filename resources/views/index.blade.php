@@ -82,6 +82,10 @@
                         <li>R Studio</li>
                         <li>Git</li>
                         <li>CLI</li>
+
+                        @for ($i = 0; $i < count($detail->skills); $i++)
+                            <li>{{$detail->skills[$i]}}</li>
+                        @endfor
                     </ul>
                 </h3>
 
