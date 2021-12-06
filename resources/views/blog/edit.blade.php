@@ -80,6 +80,16 @@
 
         <button
         type="submit"
+        name="complete"
+        value="false"
+        class="uppercase mt-15 bg-yellow-200 text-purple-900 text-lg font-extrabold py-4 px-8 rounded-3xl"
+        >
+        Save
+        </button>
+
+        <button
+        type="submit"
+        value="complete"
         class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl"
         >
         Post

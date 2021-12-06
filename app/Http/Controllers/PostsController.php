@@ -16,13 +16,28 @@ class PostsController extends Controller
     }
     
     /**
-     * Display a listing of the resource.
+     * Display a listing of the published resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('blog.index')->with('posts', Post::orderBy('updated_at','DESC')->get());
+        return view('blog.index')->with('posts', 
+        Post::orderBy('updated_at','DESC')
+        ->where('complete', 'true')
+        ->get());
+    }
+    /**
+     * Display a listing of the saved/unpublished resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function saved()
+    {
+        return view('blog.index')->with('posts', 
+        Post::orderBy('updated_at','DESC')
+        ->where('complete', 'false')
+        ->get());
     }
 
     /**
@@ -55,45 +70,13 @@ class PostsController extends Controller
         $request->title. $request->image->extension();
         $request->image->move(public_path('images'), $newImageName);
 
-        // Save form for later
-        if (Request::get('action') == 'save')
-        {
-            Post::create([
-                'title' => $request->input('title'),
-                'description' => $request->input('description'),            
-                'description' => $request->input('description'),
-                'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
-                'image_path' => $newImageName,
-                'complete' => false, 
-                'user_id' => auth()->user()->id
-            ]);
-    
-            return redirect('/blog')->with('message','Post saved');
-        }
-        // Submit form
-        elseif (Request::get('action') == 'submit')
-        {
-            Post::create([
-                'title' => $request->input('title'),
-                'excerpt' => $request->input('excerpt'),            
-                'description' => $request->input('description'),
-                'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
-                'image_path' => $newImageName,
-                'complete' => true,
-                'user_id' => auth()->user()->id
-            ]);
-    
-            return redirect('/blog')->with('message','Post added');
-        }
-
-        
-
         Post::create([
             'title' => $request->input('title'),
             'excerpt' => $request->input('excerpt'),            
             'description' => $request->input('description'),
             'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
             'image_path' => $newImageName,
+            'complete' => $request->input('complete'),
             'user_id' => auth()->user()->id
         ]);
 

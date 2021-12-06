@@ -17,6 +17,7 @@ class Post extends Model
         'excerpt',
         'description',
         'image_path',
+        'complete',
         'user_id'
     ];
     
