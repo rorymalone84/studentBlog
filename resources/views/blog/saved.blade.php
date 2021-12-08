@@ -43,7 +43,7 @@
         <a href="/blog/{{$post->slug}}" class="uppercase bg-pink-800 text-gray-100 text-lg font-extrabold py-3 px-3 rounded-3xl">Read post</a>
         
         @else
-        <!--If the count of posts are not greater than 0, this notification appears -->
+        <!--If the count of posts arent greater than 0, this notification appears -->
         <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
             No posts have been made yet
         </p>
