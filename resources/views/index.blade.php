@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-@foreach ($details as $detail)
+<!--@foreach ($details as $detail)-->
     <div class="background-image grid grid-cols-1 m-auto">
         <div class="flex text-gray-900 pt-10">
             <div class="m-auto pt-4 pb-16 sm:m- w-4/5 block text-center">
                 <h1 class="text-white text-5xl uppercase font-bold text-shadow-md pb-14">
                     Welcome to Martin's Blog.                     
-                    {{$detail->welcome_message}}                   
+                    <!--{{$detail->welcome_message}}-->    
                 </h1>
                 <a 
                 href="/blog"
@@ -28,7 +28,7 @@
             <h2 class="text-4xl font-extrabold text-gray-600" id="about">About me</h2>
             <p class="py-8 text-gray-500 text-s pt-9">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur natus officia maxime repellat adipisci. Explicabo sit impedit sunt voluptates labore praesentium doloremque porro, dicta totam molestiae, molestias est. Consequatur, quis.
-                {{$detail->about_me}}    
+                <!--{{$detail->about_me}}--> 
             </p>
         </div>
 
@@ -39,7 +39,7 @@
 
             <span class="font-extrabold block text-4xl py-1">
                 MSc Bioinformatics at University of Aberdeen
-                {{$detail->current_work}}    
+                <!--{{$detail->current_work}}-->
             </span>
 
             <br>
@@ -52,7 +52,7 @@
 
             <span class="font-extrabold block text-4xl py-1">
                 BSc (Hons) Biomedical sciences at Bangor University
-                {{$detail->past_work}} 
+                <!--{{$detail->past_work}}-->
             </span>
         </div>
 
@@ -83,9 +83,10 @@
                         <li>Git</li>
                         <li>CLI</li>
 
+                        <!--
                         @for ($i = 0; $i < count($detail->skills); $i++)
                             <li>{{$detail->skills[$i]}}</li>
-                        @endfor
+                        @endfor-->
                     </ul>
                 </h3>
 
