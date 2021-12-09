@@ -42,7 +42,7 @@ class DetailsController extends Controller
             'past_work' => 'required',
             'current_work' => 'required',
             'skills' => 'required|array',
-        ]);
+        ]);     
 
         UserDetails::create([
             'welcome_message' => $request->input('welcome_message'),
@@ -53,7 +53,8 @@ class DetailsController extends Controller
             'user_id' => auth()->user()->id
         ]);
 
-        return redirect('/blog')->with('message','Details added');
+        return redirect('/')->with('message','Details added');            
+        
     }
 
     /**
