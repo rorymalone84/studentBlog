@@ -38,7 +38,7 @@
                     <a class="no-underline hover:underline" href="/blog">Blog</a>
                     @auth
                     <a href="/blog/create" class="o-underline hover:underline">Create Post</a>
-                    <a href="/blog/saved" class="o-underline hover:underline">Saved</a>
+                    <a href="/saved" class="o-underline hover:underline">Saved</a>
                     <a href="/details" class="o-underline hover:underline">Details</a>
                     @endauth
                     @guest

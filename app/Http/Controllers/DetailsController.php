@@ -15,7 +15,9 @@ class DetailsController extends Controller
      */
     public function index()
     {
-        return view('index')->with('details', UserDetails::all());
+        //welcome screen always displays only the details of the first user in the DB
+        
+        return view('index')->with('details', UserDetails::whereIn('id', [1])->get());
     }
     
     /**
