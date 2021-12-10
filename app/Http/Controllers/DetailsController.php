@@ -90,7 +90,24 @@ class DetailsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'welcome_message' => 'required',
+            'about_me' => 'required',
+            'past_work' => 'required',
+            'current_work' => 'required',
+            'skills' => 'required|array',
+        ]);     
+
+        UserDetails::updateOrCreate([
+            'welcome_message' => $request->input('welcome_message'),
+            'about_me' => $request->input('about_me'),
+            'current_work' => $request->input('current_work'),
+            'past_work' => $request->input('past_work'),
+            'skills' => $request->input('skills'),
+            'user_id' => auth()->user()->id
+        ]);
+
+        return redirect('/')->with('message','Details added');   
     }
 
     /**
