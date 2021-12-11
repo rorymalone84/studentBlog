@@ -12,6 +12,11 @@
                 <h1 class="text-white text-5xl uppercase font-bold text-shadow-md pb-14">                     
                     {{$detail->welcome_message}}                   
                 </h1>
+
+                <div class="pb-14">
+                    <img src="images/{{$detail->profile_image_path}}" class="block w-40 h-40 rounded-full mx-auto" alt="">
+                </div>
+
                 <a 
                 href="/blog"
                 class="
@@ -33,15 +38,23 @@
     </div>
     
     <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-20 border-b border-gray-200">
-        <div>
-            <img src="images/{{$detail->profile_image_path}}" class="inline-block object-cover w-45 h-45 rounded-full" width="700" alt="">
-        </div>
-
-        <div class="m-auto sm:m-auto text-left width-4/5 block pt-9">
+        <div class="pb-14">
             <h2 class="text-4xl font-extrabold text-gray-600" id="about">About me</h2>
             <p class="py-8 text-gray-500 text-s pt-9">
                 {{$detail->about_me}}    
             </p>
+        </div>
+
+        <div class="pb-14">
+            <span class="text-4xl font-extrabold text-gray-500">
+                Blog
+            </span>
+
+            <h2 class="text-2xl text-gray-400 py-10">
+                Latest posts
+            </h2>
+
+            <p class="m-auto w-4/5 text-gray-500">Lorem ipsum dolor sit amet consectetur.</p>            
         </div>
 
         <div class="text-center p-15 bg-purple-900 text-white">
@@ -67,15 +80,7 @@
         </div>
 
         <div class="text-center p-15">
-            <span class="uppercase text-s text-gray-400">
-                Blog
-            </span>
-
-            <h2 class="text-4xl font-bold py-10">
-                Latest posts
-            </h2>
-
-            <p class="m-auto w-4/5 text-gray-500">Lorem ipsum dolor sit amet consectetur.</p>
+            
         </div>        
     </div>
 
