@@ -25,7 +25,7 @@
     <!-- If the post count is above 0, display posts / else display no posts notification -->
     @if(count($posts) > 0)
     <div>
-        <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGxhcHRvcHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80" width="700" alt="">
+        <img src="images/{{$post->image_path}}" width="700" alt="">
     </div>
     <div>
         <h2 class="text-gray-700 font-bold text-3xl pb-4 pt-2">

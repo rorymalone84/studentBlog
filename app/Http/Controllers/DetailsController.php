@@ -44,7 +44,14 @@ class DetailsController extends Controller
             'past_work' => 'required',
             'current_work' => 'required',
             'skills' => 'required|array',
-        ]);     
+            'profile_image_path' => 'sometimes|mimes:jpg,png,jpeg|max:5048'
+        ]);
+
+        if ($request->hasFile('profile_image_path')) {
+        
+        $newImageName = uniqid() .'-' .
+        $request->profile_image_path->extension();
+        $request->profile_image_path->move(public_path('images'), $newImageName);
 
         UserDetails::create([
             'welcome_message' => $request->input('welcome_message'),
@@ -52,10 +59,13 @@ class DetailsController extends Controller
             'current_work' => $request->input('current_work'),
             'past_work' => $request->input('past_work'),
             'skills' => $request->input('skills'),
+            'profile_image_path' => $newImageName,
             'user_id' => auth()->user()->id
         ]);
 
-        return redirect('/')->with('message','Details added');            
+        return redirect('/')->with('message','Details added');
+        }
+    
         
     }
 
@@ -97,8 +107,15 @@ class DetailsController extends Controller
             'past_work' => 'required',
             'current_work' => 'required',
             'skills' => 'required|array',
-        ]);     
+            'profile_image_path' => 'sometimes|mimes:jpg,png,jpeg|max:5048'
+        ]);
 
+        if ($request->hasFile('profile_image_path')) {
+        
+            $newImageName = uniqid() .'-' .
+            $request->profile_image_path->extension();
+            $request->profile_image_path->move(public_path('images'), $newImageName);
+       
         UserDetails::where('id', $id)
         ->update([
             'welcome_message' => $request->input('welcome_message'),
@@ -106,10 +123,13 @@ class DetailsController extends Controller
             'current_work' => $request->input('current_work'),
             'past_work' => $request->input('past_work'),
             'skills' => $request->input('skills'),
+            'profile_image_path' => $newImageName,
             'user_id' => auth()->user()->id
         ]);
 
         return redirect('/')->with('message','Details added changed');
+
+        }
     }
 
     /**

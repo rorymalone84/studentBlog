@@ -20,6 +20,7 @@ class Details extends Migration
             $table->string('current_work');
             $table->string('past_work');
             $table->json('skills');
+            $table->string('profile_image_path')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             

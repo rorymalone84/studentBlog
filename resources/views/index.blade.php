@@ -34,7 +34,7 @@
     
     <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-20 border-b border-gray-200">
         <div>
-            <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGxhcHRvcHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80" width="700" alt="">
+            <img src="images/{{$detail->profile_image_path}}" class="inline-block object-cover w-45 h-45 rounded-full" width="700" alt="">
         </div>
 
         <div class="m-auto sm:m-auto text-left width-4/5 block pt-9">
@@ -109,12 +109,8 @@
             <h1 class="text-black text-1xl uppercase font-bold text-shadow-md pb-14">
                 The blog owner hasn't registered, and/or hasn't added any details yet.                                      
             </h1>
-            <a 
-            href="/login"
-            class="
-            text-center bg-gray-50 text-purple-700 py-2 px-4 font-bold text-xl uppercase
-            rounded"
-            >Login to add details</a>
+            <a href="/details" class="text-center bg-gray-50 text-purple-700 py-2 px-4 font-bold text-xl uppercase
+            rounded">Add Details</a>
         </div>
 
     

@@ -16,6 +16,7 @@ class UserDetails extends Model
         'current_work',
         'past_work',
         'skills',
+        'profile_image_path',
         'user_id'
     ];
 
