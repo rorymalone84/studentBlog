@@ -18,6 +18,16 @@
                 text-center bg-gray-50 text-purple-700 py-2 px-4 font-bold text-xl uppercase
                 rounded"
                 >See my Posts</a>
+
+                @auth
+                    @if(count($details) < 1)
+                    <a href="/details" class="text-center bg-gray-50 text-purple-700 py-2 px-4 font-bold text-xl uppercase
+                    rounded">Add Details</a>                            
+                    @else
+                    <a href="/details/{{$detail->id}}" class="text-center bg-gray-50 text-purple-700 py-2 px-4 font-bold text-xl uppercase
+                        rounded">Change Details</a>   
+                    @endif
+                @endauth
             </div>
         </div>
     </div>

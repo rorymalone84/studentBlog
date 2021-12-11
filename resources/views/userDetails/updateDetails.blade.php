@@ -22,14 +22,15 @@
 </div>
 @endif
 
+@foreach ($details as $detail)
 <div class="w-4/5 m-auto pt-20">
-    <form action="/details" method="post" enctype="multipart/form-data">
+    <form action="/details/{{$detail->id}}" method="post" enctype="multipart/form-data">
         @csrf
 
         <input 
             type="text" 
             name="welcome_message" 
-            id="" 
+            value="{{$detail->welcome_message}}" 
             placeholder="Enter welcome message"
             class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
@@ -39,7 +40,7 @@
         <input 
             type="text" 
             name="about_me" 
-            id="" 
+            value="{{$detail->about_me}}"
             placeholder="Describe yourself"
             class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
@@ -48,7 +49,8 @@
 
         <input 
         type="text" 
-        name="current_work" 
+        name="current_work"
+        value="{{$detail->current_work}}"
         placeholder="Enter what you're currently doing"
         class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
@@ -58,19 +60,22 @@
         <input 
         type="text" 
         name="past_work" 
+        value="{{$detail->past_work}}"
         placeholder="Enter what you done previously"
         class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
         >
 
         <br>
-
-        <input 
-        type="text" 
-        name="skills[]" 
-        placeholder="Enter what skills you have"
-        class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
-        >
-
+            <!-- Iterates for values in the skills array -->
+            @for ($i = 0; $i < count($detail->skills); $i++)        
+            <input 
+            type="text" 
+            name="skills[]"
+            value="{{$detail->skills[$i]}}"
+            placeholder="Enter what skills you have"
+            class="bg-gray-0 block border-b-2 w-full h-10 w-6xl outline-none"
+            >
+            @endfor
         <br>
         
         <button
@@ -82,5 +87,6 @@
     
     </form>
 </div>
+@endforeach
 
 @endsection

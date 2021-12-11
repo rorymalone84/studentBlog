@@ -77,8 +77,9 @@ class DetailsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        return view('updateDetails.details');
+    {           
+        return view('userDetails.updateDetails')
+        ->with('details', UserDetails::whereIn('id', [1])->get());
     }
 
     /**
@@ -98,7 +99,8 @@ class DetailsController extends Controller
             'skills' => 'required|array',
         ]);     
 
-        UserDetails::updateOrCreate([
+        UserDetails::where('id', $id)
+        ->update([
             'welcome_message' => $request->input('welcome_message'),
             'about_me' => $request->input('about_me'),
             'current_work' => $request->input('current_work'),
@@ -107,7 +109,7 @@ class DetailsController extends Controller
             'user_id' => auth()->user()->id
         ]);
 
-        return redirect('/')->with('message','Details added');   
+        return redirect('/')->with('message','Details added changed');
     }
 
     /**

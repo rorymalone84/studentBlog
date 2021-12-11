@@ -31,7 +31,7 @@ Route::get('/blog/create',[PostsController::class, 'create'])->middleware('auth'
 
 Route::resource('/blog',PostsController::class);
 
-//Save/saved post routes
+//Saved post routes
 Route::get('/saved',[PostsController::class, 'saved'])->middleware('auth');
 
 
@@ -39,5 +39,9 @@ Route::get('/saved',[PostsController::class, 'saved'])->middleware('auth');
 
 Route::get('/details',[DetailsController::class, 'create'])->middleware('auth');
 Route::post('/details',[DetailsController::class, 'store'])->middleware('auth');
+Route::get('/details/{id}',[DetailsController::class, 'edit'])->middleware('auth');
+Route::post('/details/{id}',[DetailsController::class, 'update'])->middleware('auth');
+
+
 
 //Route::resource('/details', DetailsController::class);
