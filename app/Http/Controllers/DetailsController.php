@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use App\Models\UserDetails;
 use Illuminate\Http\Request;
@@ -15,9 +16,11 @@ class DetailsController extends Controller
      */
     public function index()
     {
-        //welcome screen always displays only the details of the first user in the DB
+        //welcome screen always displays only the details and blogm posts of the first user in the DB
+        $details = UserDetails::whereIn('id', [1])->get();
+        $posts = Post::whereIn('user_id', [1])->get();
         
-        return view('index')->with('details', UserDetails::whereIn('id', [1])->get());
+        return view('index', compact('details', 'posts' ));
     }
     
     /**

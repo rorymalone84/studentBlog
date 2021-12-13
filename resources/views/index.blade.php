@@ -54,7 +54,15 @@
                 Latest posts
             </h2>
 
-            <p class="m-auto w-4/5 text-gray-500">Lorem ipsum dolor sit amet consectetur.</p>            
+            @foreach ($posts as $post)                
+           
+            <a href="blog/{{$post->slug}}">
+            <p class="m-auto text-purple-500 text-2xl pb-2">{{$post->title}}</p>
+            </a>
+            <p>Posted: {{$post->created_at->diffForHumans()}}</p>
+
+            @endforeach
+
         </div>
 
         <div class="text-center p-15 bg-purple-900 text-white">
