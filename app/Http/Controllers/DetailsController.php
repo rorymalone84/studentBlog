@@ -50,11 +50,21 @@ class DetailsController extends Controller
             'profile_image_path' => 'sometimes|mimes:jpg,png,jpeg|max:5048'
         ]);
 
-        if ($request->hasFile('profile_image_path')) {
-        
-        $newImageName = uniqid() .'-' .
-        $request->profile_image_path->extension();
-        $request->profile_image_path->move(public_path('images'), $newImageName);
+        if(empty($request['profile_image_path'])){
+            UserDetails::create([
+                'welcome_message' => $request->input('welcome_message'),
+                'about_me' => $request->input('about_me'),
+                'current_work' => $request->input('current_work'),
+                'past_work' => $request->input('past_work'),
+                'skills' => $request->input('skills'),
+                'profile_image_path' => null,
+                'user_id' => auth()->user()->id
+            ]);
+            
+        } else{
+            $newImageName = uniqid() .'-' .
+            $request->profile_image_path->extension();
+            $request->profile_image_path->move(public_path('images'), $newImageName);
 
         UserDetails::create([
             'welcome_message' => $request->input('welcome_message'),
@@ -65,9 +75,9 @@ class DetailsController extends Controller
             'profile_image_path' => $newImageName,
             'user_id' => auth()->user()->id
         ]);
+        }
 
         return redirect('/')->with('message','Details added');
-        }
     
         
     }
