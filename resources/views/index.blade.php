@@ -54,15 +54,16 @@
                 Latest posts
             </h2>
 
-            @foreach ($posts as $post)                
-           
-            <a href="blog/{{$post->slug}}">
-            <p class="m-auto text-purple-500 text-2xl pb-2">{{$post->title}}</p>
-            </a>
-            <p>Posted: {{$post->created_at->diffForHumans()}}</p>
-
-            @endforeach
-
+            @if (count($posts)< 1 )
+                Nothing has been posted yet.
+            @else
+                @foreach ($posts as $post)           
+                    <a href="blog/{{$post->slug}}">
+                    <p class="m-auto text-purple-500 text-2xl pb-2">{{$post->title}}</p>
+                    </a>
+                    <p>Posted: {{$post->created_at->diffForHumans()}}</p>
+                @endforeach
+            @endif
         </div>
 
         <div class="text-center p-15 bg-purple-900 text-white">

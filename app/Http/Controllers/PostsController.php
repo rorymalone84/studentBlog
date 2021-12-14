@@ -63,8 +63,23 @@ class PostsController extends Controller
             'title' => 'required',
             'excerpt' => 'required',
             'description' => 'required',
-            'image' => 'required|mimes:jpg,png,jpeg|max:5048'
+            'image' => 'sometimes|mimes:jpg,png,jpeg|max:5048'
         ]);
+
+        if(empty($request['image'])){
+            Post::create([
+                'title' => $request->input('title'),
+                'excerpt' => $request->input('excerpt'),            
+                'description' => $request->input('description'),
+                'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
+                'image_path' => null,
+                'complete' => $request->input('complete'),
+                'user_id' => auth()->user()->id
+            ]);
+    
+            return redirect('/blog')->with('message','Post added');
+            
+        } else{
 
         $newImageName = uniqid() .'-' .
         $request->title. $request->image->extension();
@@ -79,6 +94,7 @@ class PostsController extends Controller
             'complete' => $request->input('complete'),
             'user_id' => auth()->user()->id
         ]);
+        }
 
         return redirect('/blog')->with('message','Post added');
     }
