@@ -16,9 +16,10 @@ class DetailsController extends Controller
      */
     public function index()
     {
-        //welcome screen always displays only the details and blogm posts of the first user in the DB
+        //welcome screen always displays only the details and completed
+        //published blog posts of the first user in the DB
         $details = UserDetails::whereIn('id', [1])->get();
-        $posts = Post::whereIn('user_id', [1])->get();
+        $posts = Post::whereIn('user_id', [1])->where('complete','true')->get();
         
         return view('index', compact('details', 'posts' ));
     }
