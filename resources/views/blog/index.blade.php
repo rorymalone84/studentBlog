@@ -25,7 +25,11 @@
     <!-- If the post count is above 0, display posts / else display no posts notification -->
     @if(count($posts) > 0)
     <div>
-        <img src="images/{{$post->image_path}}" width="700" alt="">
+        @if (is_null($post->image_path))
+            <img src="images/defaultPost.jpg" class="block w-40 h-40 rounded-full mx-auto" alt="">
+        @else
+            <img src="images/{{$post->image_path}}" width="700" alt="">
+        @endif        
     </div>
     <div>
         <h2 class="text-gray-700 font-bold text-3xl pb-4 pt-2">
@@ -44,9 +48,9 @@
         
         @else
         <!--If the count of posts are not greater than 0, this notification appears -->
-        <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
-            No posts have been made yet
-        </p>
+            <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
+                No posts have been made yet
+            </p>
         @endif
 
         <!-- edit button appears if logged in -->

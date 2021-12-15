@@ -136,23 +136,35 @@ class PostsController extends Controller
             'title' => 'required',
             'excerpt' => 'required',
             'description' => 'required',
-            'image' => 'sometimes|mimes:jpg,png,jpeg|max:5048'
+            'image' => 'nullable|mimes:jpg,png,jpeg|max:5048',
         ]);
 
-        $newImageName = uniqid() .'-' .
-        $request->title. $request->image->extension();
-        $request->image->move(public_path('images'), $newImageName);
-        
-        Post::where('slug', $slug)
-        ->update([
-            'title' => $request->input('title'),
-            'excerpt' => $request->input('excerpt'),            
-            'description' => $request->input('description'),
-            'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
-            'image_path' => $newImageName,
-            'complete' => $request->input('complete'),
-            'user_id' => auth()->user()->id
-        ]);
+        if(empty($request['image'])){            
+            Post::where('slug', $slug)
+            ->update([
+                'title' => $request->input('title'),
+                'excerpt' => $request->input('excerpt'),            
+                'description' => $request->input('description'),
+                'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
+                'complete' => $request->input('complete'),
+                'user_id' => auth()->user()->id
+            ]);    
+        }else{
+            $newImageName = uniqid() .'-' .
+            $request->title. $request->image->extension();
+            $request->image->move(public_path('images'), $newImageName);
+            
+            Post::where('slug', $slug)
+            ->update([
+                'title' => $request->input('title'),
+                'excerpt' => $request->input('excerpt'),            
+                'description' => $request->input('description'),
+                'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
+                'image_path' => $newImageName,
+                'complete' => $request->input('complete'),
+                'user_id' => auth()->user()->id
+            ]);
+        }
 
         return redirect('/blog')->with('message', 'Post updated!');
     }

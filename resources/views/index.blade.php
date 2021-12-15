@@ -14,7 +14,11 @@
                 </h1>
 
                 <div class="pb-14">
-                    <img src="images/{{$detail->profile_image_path}}" class="block w-40 h-40 rounded-full mx-auto" alt="">
+                    @if (is_null($detail->profile_image_path))
+                        <img src="images/default.jpg" class="block w-40 h-40 rounded-full mx-auto" alt="">
+                    @else
+                        <img src="images/{{$detail->profile_image_path}}" class="block w-40 h-40 rounded-full mx-auto" alt="">
+                    @endif
                 </div>
 
                 <a 
