@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostsController extends Controller
@@ -16,7 +17,7 @@ class PostsController extends Controller
     }
     
     /**
-     * Display a listing of the published resource.
+     * Display a listing of completed blog posts.
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,7 +29,7 @@ class PostsController extends Controller
         ->get());
     }
     /**
-     * Display a listing of the saved/unpublished resource.
+     * Display a listing of the saved/unpublished blog posts.
      *
      * @return \Illuminate\Http\Response
      */
@@ -52,7 +53,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created blog post in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -66,6 +67,7 @@ class PostsController extends Controller
             'image' => 'sometimes|mimes:jpg,png,jpeg|max:5048'
         ]);
 
+        //if no image is uploaded, send null
         if(empty($request['image'])){
             Post::create([
                 'title' => $request->input('title'),
@@ -80,27 +82,27 @@ class PostsController extends Controller
             return redirect('/blog')->with('message','Post added');
             
         } else{
+            //if image is uploaded, send the image name given to the $imageUploaded to the DB image_path attribute
+            $imageUploaded = request()->file('image');
+            $imageName = time(). '.' . $imageUploaded->getClientOriginalExtension();
+            $path = $imageUploaded->storeAs('blogPostImages',$imageName,'s3');
 
-        $newImageName = uniqid() .'-' .
-        $request->title. $request->image->extension();
-        $request->image->move(public_path('images'), $newImageName);
-
-        Post::create([
-            'title' => $request->input('title'),
-            'excerpt' => $request->input('excerpt'),            
-            'description' => $request->input('description'),
-            'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
-            'image_path' => $newImageName,
-            'complete' => $request->input('complete'),
-            'user_id' => auth()->user()->id
-        ]);
+            Post::create([
+                'title' => $request->input('title'),
+                'excerpt' => $request->input('excerpt'),            
+                'description' => $request->input('description'),
+                'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
+                'image_path' => $imageName,
+                'complete' => $request->input('complete'),
+                'user_id' => auth()->user()->id
+            ]);
         }
 
         return redirect('/blog')->with('message','Post added');
     }
 
     /**
-     * Display the specified resource.
+     * Display the blog post by slug.
      *
      * @param  string  $slug
      * @return \Illuminate\Http\Response
@@ -112,7 +114,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the blog post.
      *
      * @param  string  $slug
      * @return \Illuminate\Http\Response
@@ -124,7 +126,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the blog post in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $slug
@@ -139,6 +141,7 @@ class PostsController extends Controller
             'image' => 'nullable|mimes:jpg,png,jpeg|max:5048',
         ]);
 
+        //if image upload isn't used, keep the previous image path
         if(empty($request['image'])){            
             Post::where('slug', $slug)
             ->update([
@@ -150,9 +153,10 @@ class PostsController extends Controller
                 'user_id' => auth()->user()->id
             ]);    
         }else{
-            $newImageName = uniqid() .'-' .
-            $request->title. $request->image->extension();
-            $request->image->move(public_path('images'), $newImageName);
+            //else' image is uploaded, send the image name given to the $imageUploaded to the DB image_path attribute
+            $imageUploaded = request()->file('image');
+            $imageName = time(). '.' . $imageUploaded->getClientOriginalExtension();
+            $path = $imageUploaded->storeAs('blogPostImages',$imageName,'s3');
             
             Post::where('slug', $slug)
             ->update([
@@ -160,17 +164,16 @@ class PostsController extends Controller
                 'excerpt' => $request->input('excerpt'),            
                 'description' => $request->input('description'),
                 'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
-                'image_path' => $newImageName,
+                'image_path' => $imageName,
                 'complete' => $request->input('complete'),
                 'user_id' => auth()->user()->id
             ]);
         }
-
         return redirect('/blog')->with('message', 'Post updated!');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the post from storage.
      *
      * @param  string  $slug
      * @return \Illuminate\Http\Response

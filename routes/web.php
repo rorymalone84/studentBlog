@@ -20,23 +20,17 @@ use App\Http\Controllers\DetailsController;
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/',[DetailsController::class, 'index']);
 
 //Published Post routes
-
 Route::get('/blog',[PostsController::class, 'index']);
-
 Route::get('/blog/create',[PostsController::class, 'create'])->middleware('auth');
-
 Route::resource('/blog',PostsController::class);
-
 //Saved post routes
 Route::get('/saved',[PostsController::class, 'saved'])->middleware('auth');
 
 
 //Details routes
-
 Route::get('/details',[DetailsController::class, 'create'])->middleware('auth');
 Route::post('/details',[DetailsController::class, 'store'])->middleware('auth');
 Route::get('/details/{id}',[DetailsController::class, 'edit'])->middleware('auth');
@@ -44,4 +38,4 @@ Route::post('/details/{id}',[DetailsController::class, 'update'])->middleware('a
 
 
 
-//Route::resource('/details', DetailsController::class);
+//Route::resource('/details', DetailsController::class)
