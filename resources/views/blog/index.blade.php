@@ -28,9 +28,9 @@
         @if (is_null($post->image_path))
             <img src="images/defaultPost.jpg" class="block w-40 h-40 rounded-full mx-auto" alt="">
         @else
-            <img class="h-3/4 w-3/4" 
+            <img class="" 
             src="https://martins-blog-bucket.s3.eu-west-2.amazonaws.com/blogPostImages/{{$post->image_path}}" 
-            width="" height="" alt=""
+            width="400" height="auto"
             >
         @endif        
     </div>

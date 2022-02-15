@@ -15,9 +15,14 @@
 
                 <div class="pb-14">
                     @if (is_null($detail->profile_image_path))
-                        <img src="images/default.jpg" class="block w-40 h-40 rounded-full mx-auto" alt="">
+                        <img src="images/default.jpg" class="block w-40 h-40 rounded-full mx-auto">
                     @else
-                        <img src="images/{{$detail->profile_image_path}}" class="block w-40 h-40 rounded-full mx-auto" alt="">
+                        <img 
+                        src="https://martins-blog-bucket.s3.eu-west-2.amazonaws.com/detailsImage/{{$detail->profile_image_path}}" 
+                        class="block w-40 h-40 rounded-full mx-auto" 
+                        width="400" 
+                        height="auto"
+                        >
                     @endif
                 </div>
 

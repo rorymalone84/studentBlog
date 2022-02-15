@@ -63,9 +63,9 @@ class DetailsController extends Controller
             ]);
             
         } else{
-            $newImageName = uniqid() .'-' .
-            $request->profile_image_path->extension();
-            $request->profile_image_path->move(public_path('images'), $newImageName);
+            $imageUploaded = request()->file('profile_image_path');
+            $imageName = time(). '.' . $imageUploaded->getClientOriginalExtension();
+            $path = $imageUploaded->storeAs('detailsImage',$imageName,'s3');
 
             UserDetails::create([
                 'welcome_message' => $request->input('welcome_message'),
@@ -73,7 +73,7 @@ class DetailsController extends Controller
                 'current_work' => $request->input('current_work'),
                 'past_work' => $request->input('past_work'),
                 'skills' => $request->input('skills'),
-                'profile_image_path' => $newImageName,
+                'profile_image_path' => $imageName,
                 'user_id' => auth()->user()->id
             ]);
         }
@@ -135,9 +135,9 @@ class DetailsController extends Controller
                 'user_id' => auth()->user()->id
             ]);            
         }else{        
-            $newImageName = uniqid() .'-' .
-            $request->profile_image_path->extension();
-            $request->profile_image_path->move(public_path('images'), $newImageName);
+            $imageUploaded = request()->file('profile_image_path');
+            $imageName = time(). '.' . $imageUploaded->getClientOriginalExtension();
+            $path = $imageUploaded->storeAs('detailsImage',$imageName,'s3');
        
             UserDetails::where('id', $id)
             ->update([
@@ -146,7 +146,7 @@ class DetailsController extends Controller
                 'current_work' => $request->input('current_work'),
                 'past_work' => $request->input('past_work'),
                 'skills' => $request->input('skills'),
-                'profile_image_path' => $newImageName,
+                'profile_image_path' => $imageName,
                 'user_id' => auth()->user()->id
             ]);
         }
