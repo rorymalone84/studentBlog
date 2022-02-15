@@ -9,7 +9,12 @@
 
 ## About Student Blog
 
+<<<<<<< HEAD
 I made this blog as a favour for my brother who is going to University in the summer as his professors require he has a blog, to achive this I used basic CRUD functionality for blog posts and details. I have also integrated a rich text editor from CK text editor. Photos are uploaded to AWS's S3 service.
+=======
+I made this blog as a favour for my brother who is going to University in the summer as his professors require he has a blog, to achive this I used basic CRUD functionality
+for blog posts and details. I have also integrated a rich text editor from [CK text editor](https://ckeditor.com/).  Photos are uploaded to AWS's S3 service.
+>>>>>>> 494ac11861b698e5b91219784fe70be0016f1799
 
 ## Learning Areas
 
@@ -23,7 +28,10 @@ In this project, new things I have implented that haven't featured in other port
 ## ToDo
 
 Potentially include comments from guests, thus include user permissions also.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 494ac11861b698e5b91219784fe70be0016f1799
 
 
 ## Installation
